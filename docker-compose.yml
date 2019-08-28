@@ -1,0 +1,16 @@
+version: '2.1'
+
+volumes:
+  dwelo-data:
+  datadog-data:
+  dwelo-logs:
+
+services:
+  # For temporary use: trap/record network usage
+  ifsummary:
+    build: services/ifsummary
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - 'dwelo-logs:/logs'
